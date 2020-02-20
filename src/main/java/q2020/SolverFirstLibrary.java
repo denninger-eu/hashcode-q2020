@@ -25,4 +25,16 @@ public class SolverFirstLibrary {
 		return solution;
 
 	}
+
+	Solution solve_GetAllLibraries() {
+
+		for (Library lib : problem.getLibraries()) {
+			solution.addLibrary(lib.getId());
+			for (int book : lib.getBooks()) {
+				solution.addBook(lib.getId(), book);
+			}
+		}
+		return solution;
+
+	}
 }
