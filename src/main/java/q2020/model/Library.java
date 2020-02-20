@@ -1,6 +1,8 @@
 package q2020.model;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Library {
 	private final int id;
@@ -9,6 +11,8 @@ public class Library {
 	private final int numberOfBooksToShipPerDay;
 
 	public int[] books;
+
+	public List<Book> booksSorted = new ArrayList<Book>();
 
 	public Library(int id, int bookCount, int signupDays, int numberOfBooksToShipPerDay) {
 		this.id = id;
@@ -23,6 +27,10 @@ public class Library {
 
 	public int[] getBooks() {
 		return books;
+	}
+
+	public List<Book> getBooksSorted() {
+		return booksSorted;
 	}
 
 	public void setBooks(int[] books) {
@@ -46,7 +54,5 @@ public class Library {
 		return "Library [bookCount=" + bookCount + ", signupDays=" + signupDays + ", shipDays=" + numberOfBooksToShipPerDay + ", books="
 				+ Arrays.toString(books) + "]";
 	}
-
-
 
 }

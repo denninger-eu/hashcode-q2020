@@ -65,7 +65,7 @@ public class SolverByLibaryValue implements Solver {
 				if (library.getBooks().length <= bookIndex) {
 					return;
 				}
-				boolean added = solution.addBook(library.getId(), library.getBooks()[bookIndex]);
+				boolean added = solution.addBook(library.getId(), library.getBooksSorted().get(bookIndex).getId());
 				if (!added) {
 					c--;
 				}
