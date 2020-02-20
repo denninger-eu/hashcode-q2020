@@ -1,7 +1,20 @@
 package q2020;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.Before;
+import org.junit.Test;
 
 class MainTest {
+
+
+
+	@Before
+	public void setUp() {
+
+	}
+
+	@Test
+	public void test() {
+
+	}
 
 }
