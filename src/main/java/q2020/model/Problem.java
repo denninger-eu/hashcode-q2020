@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.Map;
 
 public class Problem {
+
 	private final int slideCount;
 
 	public Map<String, Integer> getTagIds() {
