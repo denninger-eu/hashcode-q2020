@@ -4,9 +4,12 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
+import q2020.model.Library;
 import q2020.model.Problem;
 
 public class Solution {
@@ -18,30 +21,56 @@ public class Solution {
 
 	private int signup;
 
+	private final Set<Integer> isUsed = new HashSet<>();
+
 	public static class UsedLibrary {
 		private final int libraryId;
 
 		private final List<Integer> books = new ArrayList<>();
 
-		public UsedLibrary(int libraryId) {
+		private int signup;
+
+		public UsedLibrary(int libraryId, int signup) {
 			this.libraryId = libraryId;
+			this.signup = signup;
+		}
+
+		public void setSignup(int signup) {
+			this.signup = signup;
+		}
+
+		public int getSignup() {
+			return signup;
 		}
 
 	}
 
-	public void addBook(int id, int book) {
+	public boolean addBook(int id, int book) {
+		if (isUsed.contains(book)) {
+			return false;
+		}
+		isUsed.add(book);
 		UsedLibrary lib = byId.get(id);
 		if (lib != null) {
 			lib.books.add(book);
 		}
+		return true;
 	}
 
-	public void addLibrary(int id) {
-		UsedLibrary library = new UsedLibrary(id);
+	public UsedLibrary addLibrary(int id) {
+		UsedLibrary library = new UsedLibrary(id, signup);
 		libraries.add(library);
 
 		byId.put(id, library);
+		return library;
+	}
 
+	public UsedLibrary addLibrary(Library library) {
+		if (signup + library.getSignupDays() > problem.getDays()) {
+			return null;
+		}
+		signup += library.getSignupDays();
+		return addLibrary(library.getId());
 	}
 
 	public Solution(Problem problem) {
