@@ -19,7 +19,7 @@ public class Main {
 		Problem problemE = parse("e_so_many_books");
 		Problem problemF = parse("f_libraries_of_the_world");
 
-		Solver solverGetAllLibrariesA = new SolverByLibaryValue(problemA);
+		Solver solverGetAllLibrariesA = new SolverChrisHandsOFF(problemA);
 		Solution solveA = solverGetAllLibrariesA.solve();
 
 		BufferedWriter writerA = Files.newBufferedWriter(Paths.get("out", problemA.getName() + ".txt"));
@@ -28,7 +28,7 @@ public class Main {
 		writerA.close();
 
 
-		Solver solverGetAllLibraries = new SolverByLibaryValue(problem);
+		Solver solverGetAllLibraries = new SolverChrisHandsOFF(problem);
 		Solution solve = solverGetAllLibraries.solve();
 
 		BufferedWriter writer = Files.newBufferedWriter(Paths.get("out", problem.getName() + ".txt"));
@@ -39,7 +39,7 @@ public class Main {
 
 
 
-		Solver solverGetAllLibrariesC = new SolverGetAllLibraries(problemC);
+		Solver solverGetAllLibrariesC = new SolverChrisHandsOFF(problemC);
 		Solution solveC = solverGetAllLibrariesC.solve();
 
 		BufferedWriter writerC = Files.newBufferedWriter(Paths.get("out", problemC.getName() + ".txt"));
@@ -50,7 +50,7 @@ public class Main {
 
 
 
-		Solver solverGetAllLibrariesD = new SolverGetAllLibraries(problemD);
+		Solver solverGetAllLibrariesD = new SolverChrisHandsOFF(problemD);
 		Solution solveD = solverGetAllLibrariesD.solve();
 
 		BufferedWriter writerD = Files.newBufferedWriter(Paths.get("out", problemD.getName() + ".txt"));
@@ -61,7 +61,7 @@ public class Main {
 
 
 
-		Solver solverGetAllLibrariesE = new SolverGetAllLibraries(problemE);
+		Solver solverGetAllLibrariesE = new SolverChrisHandsOFF(problemE);
 		Solution solveE = solverGetAllLibrariesE.solve();
 
 		BufferedWriter writerE = Files.newBufferedWriter(Paths.get("out", problemE.getName() + ".txt"));
@@ -71,7 +71,7 @@ public class Main {
 
 
 
-		Solver solverGetAllLibrariesF = new SolverGetAllLibraries(problemF);
+		Solver solverGetAllLibrariesF = new SolverChrisHandsOFF(problemF);
 		Solution solveF = solverGetAllLibrariesF.solve();
 
 		BufferedWriter writerF = Files.newBufferedWriter(Paths.get("out", problemF.getName() + ".txt"));
