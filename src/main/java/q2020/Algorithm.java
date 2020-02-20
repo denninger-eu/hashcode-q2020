@@ -27,7 +27,7 @@ public class Algorithm {
 		b.sort(new Comparer.BookByScoreDesc());
 		long score = 0L;
 
-		int days = problem.getDays() - library.getSignupDays()*3 - solution.getSignup();
+		int days = problem.getDays() - library.getSignupDays()*4 - solution.getSignup();
 		int index = 0;
 		for (int cycle = 0; cycle < days; cycle++) {
 			for (int bookOfDay = 0; bookOfDay < library.getNumberOfBooksToShipPerDay(); bookOfDay++) {

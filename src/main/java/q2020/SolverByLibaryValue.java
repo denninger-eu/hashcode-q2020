@@ -45,7 +45,7 @@ public class SolverByLibaryValue implements Solver {
 		List<LibraryWithPotential> withPotential = new ArrayList<LibraryWithPotential>();
 		do {
 			withPotential = getWithPotential();
-			int unt = Math.max(5, problem.getLibraryCount() / 5);
+			int unt = Math.max(2, problem.getLibraryCount() / 50);
 			for (int i = 0; i < unt; i++) {
 				if (withPotential.size() <= i) {
 					return solution;
@@ -75,6 +75,10 @@ public class SolverByLibaryValue implements Solver {
 					c--;
 				}
 				bookIndex++;
+			}
+			if (used.getBooks().isEmpty()) {
+				solution.unuse(library);
+
 			}
 		}
 	}

@@ -43,6 +43,9 @@ public class Solution {
 			return signup;
 		}
 
+		public List<Integer> getBooks() {
+			return books;
+		}
 	}
 
 	public boolean addBook(int id, int book) {
@@ -110,6 +113,10 @@ public class Solution {
 
 	public boolean isUsed(int book) {
 		return isUsed.contains(book);
+	}
+
+	public void unuse(Library library) {
+		signup -= library.getSignupDays();
 	}
 
 }
