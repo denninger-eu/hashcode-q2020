@@ -31,10 +31,10 @@ public class SolverByLibaryValue implements Solver {
 		}
 		withPotential.sort(new Comparer.LibraryWithPotentialDesc());
 
-		for (LibraryWithPotential library : withPotential) {
-
-			solution.addLibrary(library.getLibrary());
-		}
+//		for (LibraryWithPotential library : withPotential) {
+//
+//			solution.addLibrary(library.getLibrary());
+//		}
 
 		return solution;
 
