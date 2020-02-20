@@ -3,6 +3,7 @@ package q2020;
 import java.util.ArrayList;
 import java.util.List;
 
+import q2020.Solution.UsedLibrary;
 import q2020.model.Library;
 import q2020.model.Problem;
 
@@ -33,7 +34,7 @@ public class SolverByLibaryValue implements Solver {
 
 		for (LibraryWithPotential library : withPotential) {
 
-			solution.addLibrary(library.getLibrary());
+			addLibrary(library.getLibrary());
 		}
 
 		return solution;
@@ -41,7 +42,22 @@ public class SolverByLibaryValue implements Solver {
 	}
 
 	private void addLibrary(Library library) {
-
+		UsedLibrary used = solution.addLibrary(library);
+		if (used != null) {
+			int days = problem.getDays() - used.getSignup();
+			int sendableBooks = days * library.getShipDays();
+			int bookIndex = 0;
+			for (int c = 0; c < sendableBooks; c++) {
+				if (library.getBooks().length <= bookIndex) {
+					return;
+				}
+				boolean added = solution.addBook(library.getId(), library.getBooks()[bookIndex]);
+				if (!added) {
+					c--;
+				}
+				bookIndex++;
+			}
+		}
 	}
 
 }

@@ -19,7 +19,7 @@ public class Main {
 		Problem problemE = parse("e_so_many_books");
 		Problem problemF = parse("f_libraries_of_the_world");
 
-		Solver solverGetAllLibrariesA = new SolverGetAllLibraries(problemA);
+		Solver solverGetAllLibrariesA = new SolverByLibaryValue(problemA);
 		Solution solveA = solverGetAllLibrariesA.solve();
 
 		BufferedWriter writerA = Files.newBufferedWriter(Paths.get("out", problemA.getName() + ".txt"));
@@ -28,7 +28,7 @@ public class Main {
 		writerA.close();
 
 
-		Solver solverGetAllLibraries = new SolverGetAllLibraries(problem);
+		Solver solverGetAllLibraries = new SolverByLibaryValue(problem);
 		Solution solve = solverGetAllLibraries.solve();
 
 		BufferedWriter writer = Files.newBufferedWriter(Paths.get("out", problem.getName() + ".txt"));
