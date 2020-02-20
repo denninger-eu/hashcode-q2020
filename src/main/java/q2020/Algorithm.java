@@ -20,7 +20,9 @@ public class Algorithm {
 	public long libraryPotential(Library library) {
 		List<Book> b = new ArrayList<>();
 		for (int book : library.getBooks()) {
-			b.add(problem.getBooks().get(book));
+			if (!solution.isUsed(book)) {
+				b.add(problem.getBooks().get(book));
+			}
 		}
 		b.sort(new Comparer.BookByScoreDesc());
 		long score = 0L;

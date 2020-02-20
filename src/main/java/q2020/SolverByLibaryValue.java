@@ -1,7 +1,9 @@
 package q2020;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import q2020.Solution.UsedLibrary;
 import q2020.model.Library;
@@ -20,21 +22,33 @@ public class SolverByLibaryValue implements Solver {
 		this.algorithm = new Algorithm(problem, solution);
 	}
 
-	@Override
-	public Solution solve() {
+	Set<Integer> usedLibrary = new HashSet<Integer>();
 
+	private List<LibraryWithPotential> getWithPotential() {
 		Library[] libraries = problem.getLibraries();
 
 		List<LibraryWithPotential> withPotential = new ArrayList<LibraryWithPotential>();
 		for (Library lib : libraries) {
-			long potential = algorithm.libraryPotential(lib);
-			withPotential.add(new LibraryWithPotential(lib, potential));
+			if (!usedLibrary.contains(lib.getId())) {
+				long potential = algorithm.libraryPotential(lib);
+				withPotential.add(new LibraryWithPotential(lib, potential));
+			}
 		}
 		withPotential.sort(new Comparer.LibraryWithPotentialDesc());
+		return withPotential;
+	}
 
-		for (LibraryWithPotential library : withPotential) {
+	@Override
+	public Solution solve() {
 
-			addLibrary(library.getLibrary());
+		for (int i = 0; i < 10; i++) {
+			List<LibraryWithPotential> withPotential = getWithPotential();
+			withPotential.removeIf(wp -> usedLibrary.contains(wp.getLibrary().getId()));
+
+			for (LibraryWithPotential library : withPotential) {
+				addLibrary(library.getLibrary());
+				usedLibrary.add(library.getLibrary().getId());
+			}
 		}
 
 		return solution;
