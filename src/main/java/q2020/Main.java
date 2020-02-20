@@ -19,8 +19,8 @@ public class Main {
 		Problem problemE = parse("e_so_many_books");
 		Problem problemF = parse("f_libraries_of_the_world");
 
-		SolverGetAllLibraries solverGetAllLibrariesA = new SolverGetAllLibraries(problemA);
-		Solution solveA = solverGetAllLibrariesA.solve_GetAllLibraries();
+		Solver solverGetAllLibrariesA = new SolverGetAllLibraries(problemA);
+		Solution solveA = solverGetAllLibrariesA.solve();
 
 		BufferedWriter writerA = Files.newBufferedWriter(Paths.get("out", problemA.getName() + ".txt"));
 		solveA.write(writerA);
@@ -28,8 +28,8 @@ public class Main {
 		writerA.close();
 
 
-		SolverGetAllLibraries solverGetAllLibraries = new SolverGetAllLibraries(problem);
-		Solution solve = solverGetAllLibraries.solve_GetAllLibraries();
+		Solver solverGetAllLibraries = new SolverGetAllLibraries(problem);
+		Solution solve = solverGetAllLibraries.solve();
 
 		BufferedWriter writer = Files.newBufferedWriter(Paths.get("out", problem.getName() + ".txt"));
 		solve.write(writer);
@@ -40,7 +40,7 @@ public class Main {
 
 
 		SolverGetAllLibraries solverGetAllLibrariesC = new SolverGetAllLibraries(problemC);
-		Solution solveC = solverGetAllLibrariesC.solve_GetAllLibraries();
+		Solution solveC = solverGetAllLibrariesC.solve();
 
 		BufferedWriter writerC = Files.newBufferedWriter(Paths.get("out", problemC.getName() + ".txt"));
 		solveC.write(writerC);
@@ -51,7 +51,7 @@ public class Main {
 
 
 		SolverGetAllLibraries solverGetAllLibrariesD = new SolverGetAllLibraries(problemD);
-		Solution solveD = solverGetAllLibrariesD.solve_GetAllLibraries();
+		Solution solveD = solverGetAllLibrariesD.solve();
 
 		BufferedWriter writerD = Files.newBufferedWriter(Paths.get("out", problemD.getName() + ".txt"));
 		solveD.write(writerD);
@@ -62,7 +62,7 @@ public class Main {
 
 
 		SolverGetAllLibraries solverGetAllLibrariesE = new SolverGetAllLibraries(problemE);
-		Solution solveE = solverGetAllLibrariesE.solve_GetAllLibraries();
+		Solution solveE = solverGetAllLibrariesE.solve();
 
 		BufferedWriter writerE = Files.newBufferedWriter(Paths.get("out", problemE.getName() + ".txt"));
 		solveE.write(writerE);
@@ -72,7 +72,7 @@ public class Main {
 
 
 		SolverGetAllLibraries solverGetAllLibrariesF = new SolverGetAllLibraries(problemF);
-		Solution solveF = solverGetAllLibrariesF.solve_GetAllLibraries();
+		Solution solveF = solverGetAllLibrariesF.solve();
 
 		BufferedWriter writerF = Files.newBufferedWriter(Paths.get("out", problemF.getName() + ".txt"));
 		solveF.write(writerF);

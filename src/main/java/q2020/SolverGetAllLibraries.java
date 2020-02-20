@@ -3,7 +3,7 @@ package q2020;
 import q2020.model.Library;
 import q2020.model.Problem;
 
-public class SolverGetAllLibraries {
+public class SolverGetAllLibraries implements Solver{
 
 	private final Problem problem;
 
@@ -14,7 +14,7 @@ public class SolverGetAllLibraries {
 		solution = new Solution(problem);
 	}
 
-	Solution solve_GetAllLibraries() {
+	public Solution solve() {
 
 		for (Library lib : problem.getLibraries()) {
 			solution.addLibrary(lib.getId());
