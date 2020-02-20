@@ -24,9 +24,17 @@ public class Algorithm {
 		}
 		b.sort(new Comparer.BookByScoreDesc());
 		long score = 0L;
-		int shipCycles = (library.getBookCount() / library.getShipDays()) - library.getSignupDays();
-		for (int cycle = 0; cycle < shipCycles * library.getShipDays(); cycle++) {
-			score += b.get(cycle).getScore();
+
+		int days = problem.getDays() - library.getSignupDays();
+		int index = 0;
+		for (int cycle = 0; cycle < days; cycle++) {
+			for (int bookOfDay = 0; bookOfDay < library.getShipDays(); bookOfDay++) {
+				if (b.size() <= index) {
+					return score;
+				}
+				score += b.get(index).getScore();
+				index++;
+			}
 		}
 		return score;
 	}
