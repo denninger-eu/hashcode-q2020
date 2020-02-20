@@ -41,16 +41,21 @@ public class SolverByLibaryValue implements Solver {
 	@Override
 	public Solution solve() {
 
-		for (int i = 0; i < 10; i++) {
-			List<LibraryWithPotential> withPotential = getWithPotential();
-			withPotential.removeIf(wp -> usedLibrary.contains(wp.getLibrary().getId()));
+		boolean found = true;
+		List<LibraryWithPotential> withPotential = new ArrayList<LibraryWithPotential>();
+		do {
+			withPotential = getWithPotential();
+			int unt = Math.max(5, problem.getLibraryCount() / 10);
+			for (int i = 0; i < unt; i++) {
+				if (withPotential.size() <= i) {
+					return solution;
+				}
+				LibraryWithPotential library = withPotential.get(i);
 
-			for (LibraryWithPotential library : withPotential) {
 				addLibrary(library.getLibrary());
 				usedLibrary.add(library.getLibrary().getId());
 			}
-		}
-
+		} while (!withPotential.isEmpty());
 		return solution;
 
 	}
