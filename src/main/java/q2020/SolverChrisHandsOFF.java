@@ -32,7 +32,7 @@ public class SolverChrisHandsOFF implements Solver{
 		List<Library> libs = Arrays.stream(problem.getLibraries()).sorted(new Comparator<Library>() {
 			@Override public int compare(Library o1, Library o2) {
 				if (o1.getSignupDays() < o2.getSignupDays() ) {
-					return -1;
+					return 1;
 				} else {
 					return 0;
 				}
