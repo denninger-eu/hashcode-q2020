@@ -37,8 +37,6 @@ public class Main {
 		writer.close();
 
 
-
-
 		Solver solverGetAllLibrariesC = new SolverChrisHandsOFF(problemC);
 		Solution solveC = solverGetAllLibrariesC.solve();
 
@@ -46,8 +44,6 @@ public class Main {
 		solveC.write(writerC);
 		writerC.flush();
 		writerC.close();
-
-
 
 
 		Solver solverGetAllLibrariesD = new SolverChrisHandsOFF(problemD);
@@ -59,8 +55,6 @@ public class Main {
 		writerD.close();
 
 
-
-
 		Solver solverGetAllLibrariesE = new SolverChrisHandsOFF(problemE);
 		Solution solveE = solverGetAllLibrariesE.solve();
 
@@ -69,8 +63,6 @@ public class Main {
 		writerE.flush();
 		writerE.close();
 
-
-
 		Solver solverGetAllLibrariesF = new SolverChrisHandsOFF(problemF);
 		Solution solveF = solverGetAllLibrariesF.solve();
 
@@ -78,9 +70,6 @@ public class Main {
 		solveF.write(writerF);
 		writerF.flush();
 		writerF.close();
-
-
-
 
 	}
 

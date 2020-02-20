@@ -59,7 +59,7 @@ public class SolverByLibaryValue implements Solver {
 		UsedLibrary used = solution.addLibrary(library);
 		if (used != null) {
 			int days = problem.getDays() - used.getSignup();
-			int sendableBooks = days * library.getShipDays();
+			int sendableBooks = days * library.getNumberOfBooksToShipPerDay();
 			int bookIndex = 0;
 			for (int c = 0; c < sendableBooks; c++) {
 				if (library.getBooks().length <= bookIndex) {

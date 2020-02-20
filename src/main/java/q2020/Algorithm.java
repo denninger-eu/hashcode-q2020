@@ -30,7 +30,7 @@ public class Algorithm {
 		int days = problem.getDays() - library.getSignupDays();
 		int index = 0;
 		for (int cycle = 0; cycle < days; cycle++) {
-			for (int bookOfDay = 0; bookOfDay < library.getShipDays(); bookOfDay++) {
+			for (int bookOfDay = 0; bookOfDay < library.getNumberOfBooksToShipPerDay(); bookOfDay++) {
 				if (b.size() <= index) {
 					return score;
 				}

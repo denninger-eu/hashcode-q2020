@@ -21,14 +21,6 @@ public class SolverChrisHandsOFF implements Solver{
 
 	public Solution solve() {
 
-//		for (Library lib : problem.getLibraries()) {
-//			solution.addLibrary(lib.getId());
-//			for (int book : lib.getBooks()) {
-//				solution.addBook(lib.getId(), book);
-//			}
-//		}
-//		return solution;
-
 		List<Library> libs = Arrays.stream(problem.getLibraries()).sorted(new Comparator<Library>() {
 			@Override public int compare(Library o1, Library o2) {
 				if (o1.getSignupDays() < o2.getSignupDays() ) {
@@ -39,7 +31,27 @@ public class SolverChrisHandsOFF implements Solver{
 			}
 		}).collect(Collectors.toList());
 
-		for (Library lib : libs) {
+		List<Library> sortedByNumberOfBooks = Arrays.stream(problem.getLibraries()).sorted(new Comparator<Library>() {
+			@Override public int compare(Library o1, Library o2) {
+				if (o1.getBooks().length > o2.getBooks().length) {
+					return 1;
+				} else {
+					return 0;
+				}
+			}
+		}).collect(Collectors.toList());
+
+		List<Library> sortedByNumberOfBooksToShipPerDay = Arrays.stream(problem.getLibraries()).sorted(new Comparator<Library>() {
+			@Override public int compare(Library o1, Library o2) {
+				if (o1.getNumberOfBooksToShipPerDay() > o2.getNumberOfBooksToShipPerDay()) {
+					return 1;
+				} else {
+					return 0;
+				}
+			}
+		}).collect(Collectors.toList());
+
+		for (Library lib : sortedByNumberOfBooksToShipPerDay) {
 			solution.addLibrary(lib.getId());
 			for (int book : lib.getBooks()) {
 				solution.addBook(lib.getId(), book);

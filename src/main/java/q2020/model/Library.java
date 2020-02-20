@@ -6,15 +6,15 @@ public class Library {
 	private final int id;
 	private final int bookCount;
 	private final int signupDays;
-	private final int shipDays;
+	private final int numberOfBooksToShipPerDay;
 
 	public int[] books;
 
-	public Library(int id, int bookCount, int signupDays, int shipDays) {
+	public Library(int id, int bookCount, int signupDays, int numberOfBooksToShipPerDay) {
 		this.id = id;
 		this.bookCount = bookCount;
 		this.signupDays = signupDays;
-		this.shipDays = shipDays;
+		this.numberOfBooksToShipPerDay = numberOfBooksToShipPerDay;
 	}
 
 	public int getBookCount() {
@@ -37,13 +37,13 @@ public class Library {
 		return signupDays;
 	}
 
-	public int getShipDays() {
-		return shipDays;
+	public int getNumberOfBooksToShipPerDay() {
+		return numberOfBooksToShipPerDay;
 	}
 
 	@Override
 	public String toString() {
-		return "Library [bookCount=" + bookCount + ", signupDays=" + signupDays + ", shipDays=" + shipDays + ", books="
+		return "Library [bookCount=" + bookCount + ", signupDays=" + signupDays + ", shipDays=" + numberOfBooksToShipPerDay + ", books="
 				+ Arrays.toString(books) + "]";
 	}
 
