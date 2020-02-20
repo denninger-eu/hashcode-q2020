@@ -82,16 +82,22 @@ public class Solution {
 		writer.write("" + libraries.size());
 		writer.write("\n");
 		for (UsedLibrary lib : libraries) {
-			writer.write("" + lib.libraryId);
-			writer.write(" ");
-			writer.write("" + lib.books.size());
-			writer.write("\n");
-			for (int book : lib.books) {
-				writer.write("" + book);
+			if (lib.books.size() != 0) {
+				writer.write("" + lib.libraryId);
 				writer.write(" ");
+				writer.write("" + lib.books.size());
+				writer.write("\n");
+				for (int book : lib.books) {
+					writer.write("" + book);
+					writer.write(" ");
+				}
+				writer.write("\n");
 			}
-			writer.write("\n");
 		}
+	}
+
+	public boolean isUsed(int book) {
+		return isUsed.contains(book);
 	}
 
 }

@@ -28,7 +28,7 @@ public class Comparer {
 
 		@Override
 		public int compare(LibraryWithPotential o1, LibraryWithPotential o2) {
-			return Long.compare(o1.getScore(), o2.getScore());
+			return Long.compare(o2.getScore(), o1.getScore());
 		}
 
 	}
