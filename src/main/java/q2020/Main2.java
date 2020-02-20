@@ -29,15 +29,22 @@ public class Main2 {
 		writerA.close();
 
 
-		Solver solverGetAllLibraries = new SolverByLibaryValue(problem);
-		Solution solve = solverGetAllLibraries.solve();
+//		Solver solverGetAllLibraries = new SolverByLibaryValue(problem);
+//		Solution solve = solverGetAllLibraries.solve();
+//
+//		BufferedWriter writer = Files.newBufferedWriter(Paths.get("out", problem.getName() + ".txt"));
+//		solve.write(writer);
+//		writer.flush();
+//		writer.close();
 
-		BufferedWriter writer = Files.newBufferedWriter(Paths.get("out", problem.getName() + ".txt"));
-		solve.write(writer);
-		writer.flush();
-		writer.close();
+		Solver solverGetAllLibrariesE = new SolverByLibaryValue(problemE);
+		Solution solveE = solverGetAllLibrariesE.solve();
 
-
+		BufferedWriter writerE = Files.newBufferedWriter(Paths.get("out", problemE.getName() + ".txt"));
+		solveE.write(writerE);
+		writerE.flush();
+		writerE.close();
+		
 		Solver solverGetAllLibrariesC = new SolverByLibaryValue(problemC);
 		Solution solveC = solverGetAllLibrariesC.solve();
 
@@ -47,22 +54,16 @@ public class Main2 {
 		writerC.close();
 
 
-		Solver solverGetAllLibrariesD = new SolverByLibaryValue(problemD);
-		Solution solveD = solverGetAllLibrariesD.solve();
+//		Solver solverGetAllLibrariesD = new SolverByLibaryValue(problemD);
+//		Solution solveD = solverGetAllLibrariesD.solve();
+//
+//		BufferedWriter writerD = Files.newBufferedWriter(Paths.get("out", problemD.getName() + ".txt"));
+//		solveD.write(writerD);
+//		writerD.flush();
+//		writerD.close();
 
-		BufferedWriter writerD = Files.newBufferedWriter(Paths.get("out", problemD.getName() + ".txt"));
-		solveD.write(writerD);
-		writerD.flush();
-		writerD.close();
 
 
-		Solver solverGetAllLibrariesE = new SolverByLibaryValue(problemE);
-		Solution solveE = solverGetAllLibrariesE.solve();
-
-		BufferedWriter writerE = Files.newBufferedWriter(Paths.get("out", problemE.getName() + ".txt"));
-		solveE.write(writerE);
-		writerE.flush();
-		writerE.close();
 
 		Solver solverGetAllLibrariesF = new SolverByLibaryValue(problemF);
 		Solution solveF = solverGetAllLibrariesF.solve();
