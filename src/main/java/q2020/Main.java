@@ -12,11 +12,22 @@ import q2020.model.Problem;
 public class Main {
 	public static void main(String[] args) throws IOException {
 
+		Problem problemA = parse("a_example");
 		Problem problem = parse("b_read_on");
 		Problem problemC = parse("c_incunabula");
 		Problem problemD = parse ("d_tough_choices");
 		Problem problemE = parse("e_so_many_books");
 		Problem problemF = parse("f_libraries_of_the_world");
+
+		SolverFirstLibrary solverFirstLibraryA = new SolverFirstLibrary(problemA);
+		Solution solveA = solverFirstLibraryA.solve_GetAllLibraries();
+
+		BufferedWriter writerA = Files.newBufferedWriter(Paths.get("out", problemA.getName() + ".txt"));
+		solveA.write(writerA);
+		writerA.flush();
+		writerA.close();
+
+
 
 		SolverFirstLibrary solverFirstLibrary = new SolverFirstLibrary(problem);
 		Solution solve = solverFirstLibrary.solve_GetAllLibraries();
