@@ -2,19 +2,28 @@ package q2020.model;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.Map;
+import java.util.Arrays;
 
 public class Problem {
 
-	private final int slideCount;
+	private final int bookCount;
+	private final int libraryCount;
+	private final int days;
 
-	public Map<String, Integer> getTagIds() {
-		return tagIds;
+	private int[] bookScore;
+
+	private Library[] libraries;
+
+	public Problem(int bookCount, int libraryCount, int days) {
+		this.bookCount = bookCount;
+		this.libraryCount = libraryCount;
+		this.days = days;
 	}
 
 	public static Problem parseHeader(String header) {
-		int[] head = parseLine(header, new int[1]);
-		return new Problem(head[0]);
+		int[] head = parseLine(header, new int[3]);
+
+		return new Problem(head[0], head[1], head[2]);
 	}
 
 	public static Problem parse(BufferedReader bf) {
@@ -22,40 +31,16 @@ public class Problem {
 		try {
 			Problem problem = parseHeader(bf.readLine());
 
-			// int[] temp = new int[6];
-			// String line;
-			// int id = 0;
-			//
-			// List<String> tag = new ArrayList<>();
-			//
-			// while ((line = bf.readLine()) != null) {
-			//
-			// String[] parts = line.split(" ");
-			//
-			// boolean hori = "H".equals(parts[0]);
-			//
-			// List<Integer> tags = new ArrayList<Integer>();
-			// for (int index = 2; index < parts.length; index++) {
-			//
-			// Integer tagId = problem.tagIds.get(parts[index]);
-			// if (tagId == null) {
-			// tagId = problem.tagIds.size();
-			// problem.tagIds.put(parts[index], tagId);
-			// }
-			// if (tagId >= 0) {
-			// tag.add(parts[index]);
-			// }
-			//
-			// tags.add(tagId);
-			// }
-			//
-			// Collections.sort(tags);
-			//
-			// problem.slides.add(new Slide(id, hori, tags.size(),
-			// tags.stream().mapToInt(Integer::intValue).toArray()));
-			// id++;
-			// }
-			//
+			problem.bookScore = parseLine(bf.readLine(), new int[problem.bookCount]);
+			problem.libraries = new Library[problem.libraryCount];
+			for (int library = 0; library < problem.libraryCount; library++) {
+
+				int[] libraryHeader = parseLine(bf.readLine(), new int[3]);
+				Library lib = new Library(libraryHeader[0], libraryHeader[1], libraryHeader[2]);
+				lib.books = parseLine(bf.readLine(), new int[lib.getBookCount()]);
+
+				problem.libraries[library] = lib;
+			}
 
 			return problem;
 		} catch (IOException e) {
@@ -69,6 +54,12 @@ public class Problem {
 			target[index] = Integer.parseInt(parts[index]);
 		}
 		return target;
+	}
+
+	@Override
+	public String toString() {
+		return "Problem [bookCount=" + bookCount + ", libraryCount=" + libraryCount + ", days=" + days + ", bookScore="
+				+ Arrays.toString(bookScore) + ", libraries=" + Arrays.toString(libraries) + "]";
 	}
 
 }
