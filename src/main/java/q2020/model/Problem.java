@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.Arrays;
 
 public class Problem {
-
+	private final String name;
 	private final int bookCount;
 	private final int libraryCount;
 	private final int days;
@@ -14,29 +14,34 @@ public class Problem {
 
 	private Library[] libraries;
 
-	public Problem(int bookCount, int libraryCount, int days) {
+	public Problem(String name, int bookCount, int libraryCount, int days) {
+		this.name = name;
 		this.bookCount = bookCount;
 		this.libraryCount = libraryCount;
 		this.days = days;
 	}
 
-	public static Problem parseHeader(String header) {
-		int[] head = parseLine(header, new int[3]);
-
-		return new Problem(head[0], head[1], head[2]);
+	public String getName() {
+		return name;
 	}
 
-	public static Problem parse(BufferedReader bf) {
+	public static Problem parseHeader(String header, String name) {
+		int[] head = parseLine(header, new int[3]);
+
+		return new Problem(name, head[0], head[1], head[2]);
+	}
+
+	public static Problem parse(BufferedReader bf, String name2) {
 
 		try {
-			Problem problem = parseHeader(bf.readLine());
+			Problem problem = parseHeader(bf.readLine(), name2);
 
 			problem.bookScore = parseLine(bf.readLine(), new int[problem.bookCount]);
 			problem.libraries = new Library[problem.libraryCount];
 			for (int library = 0; library < problem.libraryCount; library++) {
 
 				int[] libraryHeader = parseLine(bf.readLine(), new int[3]);
-				Library lib = new Library(libraryHeader[0], libraryHeader[1], libraryHeader[2]);
+				Library lib = new Library(library, libraryHeader[0], libraryHeader[1], libraryHeader[2]);
 				lib.books = parseLine(bf.readLine(), new int[lib.getBookCount()]);
 
 				problem.libraries[library] = lib;
@@ -60,6 +65,34 @@ public class Problem {
 	public String toString() {
 		return "Problem [bookCount=" + bookCount + ", libraryCount=" + libraryCount + ", days=" + days + ", bookScore="
 				+ Arrays.toString(bookScore) + ", libraries=" + Arrays.toString(libraries) + "]";
+	}
+
+	public int getBookCount() {
+		return bookCount;
+	}
+
+	public int[] getBookScore() {
+		return bookScore;
+	}
+
+	public void setBookScore(int[] bookScore) {
+		this.bookScore = bookScore;
+	}
+
+	public Library[] getLibraries() {
+		return libraries;
+	}
+
+	public void setLibraries(Library[] libraries) {
+		this.libraries = libraries;
+	}
+
+	public int getLibraryCount() {
+		return libraryCount;
+	}
+
+	public int getDays() {
+		return days;
 	}
 
 }
