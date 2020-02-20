@@ -16,6 +16,8 @@ public class Solution {
 
 	private final Map<Integer, UsedLibrary> byId = new HashMap<>();
 
+	private int signup;
+
 	public static class UsedLibrary {
 		private final int libraryId;
 
