@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import q2020.Comparer;
+
 public class Problem {
 	private final String name;
 	private final int bookCount;
@@ -64,6 +66,11 @@ public class Problem {
 
 				problem.libraryByBook.computeIfAbsent(library, (__) -> new ArrayList<>()).add(lib);
 				problem.libraries[library] = lib;
+
+				for (int book : lib.books) {
+					lib.booksSorted.add(problem.books.get(book));
+				}
+				lib.booksSorted.sort(new Comparer.BookByScoreDesc());
 			}
 
 			return problem;

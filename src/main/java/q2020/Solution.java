@@ -78,6 +78,10 @@ public class Solution {
 		// TODO Auto-generated constructor stub
 	}
 
+	public int getSignup() {
+		return signup;
+	}
+
 	public void write(Writer writer) throws IOException {
 
 		int libCount = 0;
