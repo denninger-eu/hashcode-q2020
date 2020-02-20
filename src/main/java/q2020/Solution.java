@@ -79,7 +79,15 @@ public class Solution {
 	}
 
 	public void write(Writer writer) throws IOException {
-		writer.write("" + libraries.size());
+
+		int libCount = 0;
+		for (UsedLibrary l : libraries) {
+			if (l.books.size() != 0) {
+				libCount++;
+			}
+		}
+
+		writer.write("" + libCount);
 		writer.write("\n");
 		for (UsedLibrary lib : libraries) {
 			if (lib.books.size() != 0) {
